@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 00:25:11 by mbuchs            #+#    #+#             */
-/*   Updated: 2023/09/27 00:59:36 by asuc             ###   ########.fr       */
+/*   Created: 2023/09/25 22:35:23 by asuc              #+#    #+#             */
+/*   Updated: 2023/09/26 19:07:21 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*memmove(void *dest, const void *src, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
+	size_t			i;
+	unsigned char	*p;
 
+	p = s;
+	i = 0;
+	if (!s)
+		return ;
+	while (i < n)
+	{
+		(*p) = 0;
+		p++;
+		i++;
+	}
 }

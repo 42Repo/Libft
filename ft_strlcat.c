@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 17:11:49 by asuc              #+#    #+#             */
-/*   Updated: 2023/07/16 17:30:31 by asuc             ###   ########.fr       */
+/*   Created: 2023/07/17 16:50:06 by asuc              #+#    #+#             */
+/*   Updated: 2023/07/18 13:36:19 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-static unsigned int	ft_strlen_strlcpy(char *str)
+static unsigned int	ft_strlen_strlcat(char *str)
 {
 	int	i;
 
@@ -24,29 +24,28 @@ static unsigned int	ft_strlen_strlcpy(char *str)
 	return (i);
 }
 
-unsigned	int	ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	i;
-	int				len_src;
+	unsigned int	j;
+	unsigned int	resultat_d;
+	unsigned int	resultat_s;
 
-	i = 0;
-	len_src = ft_strlen_strlcpy(src);
-	if (!size)
-		return (len_src);
-	while (src[i] && i < size)
+	i = ft_strlen_strlcat(dest);
+	j = 0;
+	resultat_d = i;
+	resultat_s = ft_strlen_strlcat(src);
+	if (size < 1)
+		return (resultat_s + size);
+	while (src[j] && i < size - 1)
 	{
-		dest[i] = src[i];
+		dest[i] = src[j];
 		i++;
+		j++;
 	}
-	while (i < size)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	if (i == size)
-	{
-		dest[i - 1] = '\0';
-		i++;
-	}
-	return (len_src);
+	dest[i] = 0;
+	if (size < resultat_d)
+		return (resultat_s + size);
+	else
+		return (resultat_s + resultat_d);
 }

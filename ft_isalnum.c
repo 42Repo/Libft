@@ -9,3 +9,12 @@
 /*   Updated: 2023/08/12 03:53:38 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_isalnum(char c)
+{
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	return (0);
+}
