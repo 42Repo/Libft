@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42angouleme.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 21:44:07 by asuc              #+#    #+#             */
 /*   Updated: 2023/07/26 12:34:51 by asuc             ###   ########.fr       */
