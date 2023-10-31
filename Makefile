@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = libft.a
-COMP = gcc
+COMP = clang
 CFLAGS = -Wall -Werror -Wextra
 
 SRC = ft_strlen.c\
@@ -42,6 +42,14 @@ SRC = ft_strlen.c\
 	ft_strmapi.c\
 	ft_substr.c\
 	ft_memset.c\
+	ft_strnstr.c\
+	ft_memcmp.c\
+	ft_memchr.c\
+	ft_memcpy.c\
+	ft_strtrim.c\
+	ft_memmove.c
+
+
 
 OBJ = $(SRC:.c=.o)
 
@@ -53,11 +61,16 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
+	gcc -nostartfiles -shared -o libft.so $(OBJ)
+
 clean :
 	rm -f $(OBJ)
 
 fclean : clean
 	rm -f $(NAME)
+	rm -f libft.so
 
 re : fclean all
 

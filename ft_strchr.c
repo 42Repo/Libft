@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:25:20 by asuc              #+#    #+#             */
-/*   Updated: 2023/10/30 12:13:46 by asuc             ###   ########.fr       */
+/*   Updated: 2023/10/31 17:13:53 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ char	*ft_strchr(char *s, char c)
 	{
 		if (s[i] == c)
 			return (&(s[i]));
+		i++;
 	}
+	if (s[i] == c)
+		return (&(s[i]));
 	return (NULL);
 }

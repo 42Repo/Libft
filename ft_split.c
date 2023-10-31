@@ -5,6 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/30 21:24:30 by asuc              #+#    #+#             */
+/*   Updated: 2023/10/30 21:38:02 by asuc             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:51:56 by asuc              #+#    #+#             */
 /*   Updated: 2023/07/26 18:55:26 by asuc             ###   ########.fr       */
 /*                                                                            */
@@ -12,21 +24,7 @@
 
 #include "libft.h"
 
-static int	search_in_charset(char c, char *charset)
-{
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (c == charset[i])
-			return (-1);
-		i++;
-	}
-	return (0);
-}
-
-static char	*ft_strdup_split(char *src, char *charset)
+static char	*ft_strdup_split(char *src, char charset)
 {
 	char	*tab;
 	int		i;
@@ -37,9 +35,9 @@ static char	*ft_strdup_split(char *src, char *charset)
 	while (src[len])
 		len++;
 	tab = malloc(sizeof(char) * len);
-	if (tab == NULL || charset == NULL || src == NULL)
+	if (tab == NULL || src == NULL)
 		return (tab);
-	while (src[i] && search_in_charset(src[i], charset) == 0 && tab)
+	while (src[i] && src[i] != charset && tab)
 	{
 		tab[i] = src[i];
 		i++;
@@ -48,7 +46,7 @@ static char	*ft_strdup_split(char *src, char *charset)
 	return (tab);
 }
 
-static int	count_word(char *str, char *charset)
+static int	count_word(char *str, char charset)
 {
 	int	i;
 	int	count;
@@ -59,7 +57,7 @@ static int	count_word(char *str, char *charset)
 	bol = 1;
 	while (str[i])
 	{
-		if (search_in_charset(str[i], charset) == 0)
+		if (str[i] != charset)
 		{
 			if (bol == 1)
 				count++;
@@ -74,7 +72,7 @@ static int	count_word(char *str, char *charset)
 	return (count);
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split(char *str, char charset)
 {
 	char	**ret;
 	int		i;
@@ -88,12 +86,12 @@ char	**ft_split(char *str, char *charset)
 		return (ret);
 	while (i < count_word(str, charset) && str)
 	{
-		while (-1 == search_in_charset(str[j], charset)
+		while (str[i] == charset
 			&& str[j] != 0)
 			j++;
 		ret[i] = ft_strdup_split(str + j, charset);
 		i++;
-		while (0 == search_in_charset(str[j], charset)
+		while (str[i] != charset
 			&& str[j] != 0)
 			j++;
 	}

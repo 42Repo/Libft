@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 00:25:29 by asuc              #+#    #+#             */
-/*   Updated: 2023/10/30 15:22:45 by asuc             ###   ########.fr       */
+/*   Created: 2023/09/26 00:24:57 by asuc              #+#    #+#             */
+/*   Updated: 2023/10/30 20:48:18 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strnstr(const char *big, const char *little, size_t len)
+void	*ft_memchr(const void *memoryBlock, int searchedChar, size_t size)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (big [i] && j < len)
+	while (size)
 	{
-		if (big[i] == little[j])
-			j++;
+		if (((char *)memoryBlock)[i] == searchedChar)
+			return ((void *)(memoryBlock + i));
+		size--;
 		i++;
 	}
-	return (i - len);
+	return (NULL);
 }

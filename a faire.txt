@@ -1,2 +1,0 @@
-aurel lire substr
-mael lire ft_strmapi et ft_striteri

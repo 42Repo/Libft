@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 13:43:40 by asuc              #+#    #+#             */
-/*   Updated: 2023/10/30 12:14:23 by asuc             ###   ########.fr       */
+/*   Created: 2023/10/30 21:24:27 by asuc              #+#    #+#             */
+/*   Updated: 2023/10/30 21:59:39 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,21 @@ static char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strjoin(int size, char **strs, char *sep)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		i;
 	int		j;
 	char	*array;
+	int		lenght;
 
 	j = 0;
 	i = -1;
 	array = NULL;
-	while (++i < size)
-		j += ft_strlen(strs[i]);
-	array = malloc((j + ((size) * ft_strlen(sep))) * sizeof(char));
+	lenght = ft_strlen((char *)s1) + ft_strlen((char *)s2);
+	array = malloc(lenght * sizeof(char));
 	if (array == NULL)
-		return (array);
-	*array = 0;
-	if (size <= 0)
-		return (array);
-	i = 0;
-	j = 0;
-	while (i < size)
-	{
-		ft_strcat(array, strs[i]);
-		if (i + 1 < size)
-			ft_strcat(array, sep);
-		i++;
-	}
+		return (NULL);
+	ft_strcat(array, (char *)s1);
+	ft_strcat(array, (char *)s2);
 	return (array);
 }

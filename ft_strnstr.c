@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 22:38:02 by asuc            #+#    #+#             */
-/*   Updated: 2023/10/30 12:12:39 by asuc             ###   ########.fr       */
+/*   Created: 2023/09/26 00:25:29 by asuc              #+#    #+#             */
+/*   Updated: 2023/10/31 17:13:53 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	void	*tab;
+	long unsigned int	i;
+	long unsigned int	j;
 
-	tab = malloc(nmemb * size);
-	if (!tab)
+	i = 0;
+	if (little[0] == 0)
+		return ((char *)big);
+	if (len == 0)
 		return (NULL);
-	ft_bzero(tab, nmemb * size);
-	return (tab);
+	while (big[i] && i < len)
+	{
+		j = 0;
+		while (big[i + j] == little[j]
+			&& little[j] && big[i + j] && i + j < len)
+			j++;
+		if (little[j] == 0 && big[i + j - 1] == little[j - 1])
+			return ((char *) &big[i]);
+		i++;
+	}
+	return (NULL);
 }
