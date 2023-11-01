@@ -6,7 +6,7 @@
 /*   By: mbuchs <mael@buchs.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 14:33:38 by mbuchs            #+#    #+#             */
-/*   Updated: 2023/11/01 17:07:28 by mbuchs           ###   ########.fr       */
+/*   Updated: 2023/11/01 17:22:48 by mbuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	free (lst);
 	del(lst);
+	free (lst);
 }
