@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:24:30 by asuc              #+#    #+#             */
-/*   Updated: 2023/10/30 21:38:02 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/01 19:30:11 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static char	*ft_strdup_split(char *src, char charset)
 {
@@ -81,17 +82,19 @@ char	**ft_split(char *str, char charset)
 	ret = NULL;
 	j = 0;
 	i = 0;
+	if (!str)
+		return (NULL);
 	ret = malloc(sizeof(char *) * (count_word(str, charset) + 1));
 	if (ret == NULL)
 		return (ret);
 	while (i < count_word(str, charset) && str)
 	{
-		while (str[i] == charset
+		while (str[j] == charset
 			&& str[j] != 0)
 			j++;
 		ret[i] = ft_strdup_split(str + j, charset);
 		i++;
-		while (str[i] != charset
+		while (str[j] != charset
 			&& str[j] != 0)
 			j++;
 	}

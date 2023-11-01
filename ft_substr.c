@@ -6,12 +6,13 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:25:39 by asuc              #+#    #+#             */
-/*   Updated: 2023/10/31 15:11:04 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/01 18:11:06 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
  #include <stdio.h>
  #include <stdlib.h>
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*tab;
@@ -20,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (len == 0 || s[0] == 0)
 		return (NULL);
-	len -=1;
+	len -= 1;
 	j = 0;
 	i = start;
 	tab = malloc (len + 1);
