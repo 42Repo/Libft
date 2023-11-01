@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:25:11 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/01 17:07:56 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/01 17:34:44 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -19,30 +18,23 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	char	*from;
 	char	*to;
 
+	if (!dest && !src)
+		return (NULL);
 	from = (char *)src;
 	to = (char *)dest;
 	i = 0;
 	if (to > from)
 	{
-		// `dest` chevauche la fin de `src`
-		i = n - 1 ;
-		while (i > 0)
-		{
-			to[i] = from[i];
-			i--;
-		}
-		return (dest);
+		while (n--)
+			to[n] = from[n];
 	}
 	else
 	{
-		// `dest` chevauche le début de `src`
 		while (i < n)
 		{
 			to[i] = from[i];
 			i++;
 		}
-		return (dest);
 	}
-	// src` et `dest` se chevauchent pas
 	return (dest);
 }

@@ -19,8 +19,8 @@
 //Struct utilisée pour les fonctions bonus
 typedef struct s_list
 {
-	void *content;			// Donnee contenue dans le maillon
-	struct s_list *next;	// Adresse du maillon suivant de la liste (NULL si dernier)
+	void			*content;
+	struct s_list	*next;
 }	t_list;
 
 int				ft_atoi(char *str);
