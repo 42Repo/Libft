@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+
 int				ft_atoi(char *str);
 char			**ft_split(char *str, char charset);
 size_t			ft_strlen(const char *s);
@@ -52,5 +53,14 @@ void			*ft_memchr(const void *memoryBlock,
 					int searchedChar, size_t size);
 void			*ft_memmove(void *dest, const void *src, size_t n);
 char			*ft_strtrim(char const *str, char const *set);
+
+
+//Struct utilisée pour les fonctions bonus
+
+typedef struct s_list
+{
+	void *content;			// Donnee contenue dans le maillon
+	struct s_list *next;	// Adresse du maillon suivant de la liste (NULL si dernier)
+} t_list;
 
 #endif
