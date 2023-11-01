@@ -6,13 +6,13 @@
 /*   By: mbuchs <mael@buchs.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 23:28:48 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/01 17:48:55 by mbuchs           ###   ########.fr       */
+/*   Updated: 2023/11/01 18:21:23 by mbuchs           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_numlen(int n)
+static int	ft_numlen(long long int n)
 {
 	int	len;
 
@@ -31,12 +31,12 @@ static int	ft_numlen(int n)
 	}
 	return (len);
 }
-static char *neg_nbr(int n, int len)
+
+static	char* neg_nr(long long int n, int len)
 {
 	char	*str;
 
 	str = malloc((len + 1) * sizeof(char));
-	n = -n;
 	str[0] = '-';
 	len--;
 	while (len > 0)
@@ -46,32 +46,30 @@ static char *neg_nbr(int n, int len)
 		n /= 10;
 		len--;
 	}
-	return(str);
+	return (str);
 }
 
 char	*ft_itoa(int n)
 {
 	int		len;
 	char	*str;
+	long long int nb;
 
-	len = ft_numlen(n);
-	if (n > -2147483648)
-		return (NULL);
-	if (n == -2147483648)
-		return ("-2147483648");
-	if(n < 0)
+	nb = n;
+	len = ft_numlen(nb);
+	if (nb < 0)
 	{
-		str = malloc((len + 1) * sizeof(char));
-		str = neg_nbr(n, len);
+		str = malloc((len + 2) * sizeof(char));
+		str = neg_nr(-nb, len);
 		return (str);
 	}
-	str = malloc((len) * sizeof(char));
+	str = malloc((len +1) * sizeof(char));
 	len--;
 	while (len >= 0)
 	{
-		str[len] = n % 10 + '0';
+		str[len] = nb % 10 + '0';
 		printf("%d", len);
-		n /= 10;
+		nb /= 10;
 		len--;
 	}
 	return (str);
