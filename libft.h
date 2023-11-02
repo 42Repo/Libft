@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-//Struct utilisée pour les fonctions bonus
 typedef struct s_list
 {
 	void			*content;

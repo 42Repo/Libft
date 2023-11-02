@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:24:27 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/02 18:10:53 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/02 21:54:32 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static char	*ft_strcat(char *dest, char *src)
 {
