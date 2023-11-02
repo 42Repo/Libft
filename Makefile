@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = libft.a
-COMP = clang
+COMP = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 LIB = ft_strlen.c\
