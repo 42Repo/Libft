@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 22:35:26 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/01 23:31:18 by asuc             ###   ########.fr       */
+/*   Created: 2023/11/01 14:33:38 by asuc              #+#    #+#             */
+/*   Updated: 2023/11/02 18:00:05 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+t_list	*ft_lstnew(void *content)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	t_list	*new;
+
+	new = malloc(sizeof(*new));
+	if (new == NULL)
+		return (NULL);
+	new -> content = content;
+	new -> next = NULL;
+	return (new);
 }

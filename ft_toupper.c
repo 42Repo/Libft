@@ -6,16 +6,15 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 21:39:33 by asuc              #+#    #+#             */
-/*   Updated: 2023/10/31 15:06:11 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/02 18:01:13 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(char c)
+int	ft_toupper(int c)
 {
-	if (!(c >= 'a' && c <= 'z'))
-		return (c);
-	c -= 32;
+	if ((c >= 'a' && c <= 'z'))
+		c -= 32;
 	return (c);
 }

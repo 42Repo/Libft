@@ -6,22 +6,23 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:24:57 by asuc              #+#    #+#             */
-/*   Updated: 2023/10/30 20:48:18 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/02 19:15:06 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void	*ft_memchr(const void *memoryBlock, int searchedChar, size_t size)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	int	i;
 
 	i = 0;
-	while (size)
+	while (n)
 	{
-		if (((char *)memoryBlock)[i] == searchedChar)
-			return ((void *)(memoryBlock + i));
-		size--;
+		if (((unsigned char *)s)[i] == (unsigned char)c)
+			return ((void *)(s + i));
+		n--;
 		i++;
 	}
 	return (NULL);

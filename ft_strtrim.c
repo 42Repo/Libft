@@ -6,48 +6,12 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:25:36 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/01 17:23:38 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/01 23:20:42 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// int	ft_strlen(char *str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (str[i])
-// 		i++;
-// 	return (i);
-// }
-
-// void	ft_bzero(void *s, size_t n)
-// {
-// 	size_t			i;
-// 	unsigned char	*p;
-
-// 	p = s;
-// 	i = 0;
-// 	if (!s)
-// 		return ;
-// 	while (i < n)
-// 	{
-// 		(*p) = 0;
-// 		p++;
-// 		i++;
-// 	}
-// }
-// void	*calloc(size_t nmemb, size_t size)
-// {
-// 	void	*tab;
-
-// 	tab = malloc(nmemb * size);
-// 	if (!tab)
-// 		return (NULL);
-// 	ft_bzero(tab, nmemb * size);
-// 	return (tab);
-// }
 static int	is_charset(char c, char *charset)
 {
 	int	i;
@@ -62,6 +26,17 @@ static int	is_charset(char c, char *charset)
 	return (0);
 }
 
+static int	get_start(char const *str, char const *set, int end)
+{
+	int	start;
+
+	start = 0;
+	while (is_charset(str[start], (char *)set) == 1 && str[start]
+		&& start <= end)
+		start++;
+	return (start);
+}
+
 char	*ft_strtrim(char const *str, char const *set)
 {
 	char	*res;
@@ -69,23 +44,23 @@ char	*ft_strtrim(char const *str, char const *set)
 	int		end;
 	int		i;
 
+	if (!str)
+		return (NULL);
 	i = 0;
-	start = 0;
 	end = ft_strlen((char *)str) - 1;
-	while (is_charset(str[start], (char *)set) == 1 && str[start]
-		&& start <= end)
-		start++;
+	start = get_start(str, set, end);
 	while (is_charset(str[end], (char *)set) == 1 && end >= start)
 		end--;
-	res = ft_calloc(end - start + 1, sizeof(char));
+	if (end - start < 0)
+		return (ft_calloc(1, sizeof(char)));
+	res = ft_calloc(end - start + 2, sizeof(char));
+	if (res == NULL)
+		return (NULL);
 	while (i < end + 1 - start)
 	{
 		res[i] = str[start + i];
 		i++;
 	}
+	res[i] = 0;
 	return (res);
 }
-// int main()
-// {
-//	 printf("%s", ft_strtrim("", ""));
-// }

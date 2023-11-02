@@ -1,0 +1,2 @@
+Check all declaration
+TOUT proteger input, malloc, ect

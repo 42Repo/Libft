@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 23:28:48 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/01 18:42:07 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/01 23:48:47 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,20 @@ static int	ft_numlen(long long int n)
 	return (len);
 }
 
-static char	*neg_nbr(unsigned int n, int len)
+static char	*neg_nbr(unsigned int n, int len, char **str)
 {
-	char	*str;
-
-	str = ft_calloc((len + 1), sizeof(char));
-	if (str == NULL)
+	(*str) = ft_calloc((len + 1), sizeof(char));
+	if ((*str) == NULL)
 		return (NULL);
-	str[0] = '-';
+	(*str)[0] = '-';
 	len--;
 	while (len > 0)
 	{
-		str[len] = n % 10 + '0';
+		(*str)[len] = n % 10 + '0';
 		n /= 10;
 		len--;
 	}
-	return (str);
+	return (*str);
 }
 
 char	*ft_itoa(int n)
@@ -58,10 +56,7 @@ char	*ft_itoa(int n)
 	len = ft_numlen(n);
 	if (n < 0)
 	{
-		str = ft_calloc((len + 1), sizeof(char));
-		if (str == NULL)
-			return (NULL);
-		str = neg_nbr(-n, len);
+		str = neg_nbr(-n, len, &str);
 		return (str);
 	}
 	str = ft_calloc((len + 1), sizeof(char));
