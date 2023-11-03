@@ -6,13 +6,13 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:25:36 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/01 23:20:42 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/03 17:47:02 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_charset(char c, char *charset)
+static int	is_charset(char c, const char *charset)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ static int	is_charset(char c, char *charset)
 	return (0);
 }
 
-static int	get_start(char const *str, char const *set, int end)
+static int	get_start(const char *str, const char *set, int end)
 {
 	int	start;
 
@@ -47,20 +47,21 @@ char	*ft_strtrim(char const *str, char const *set)
 	if (!str)
 		return (NULL);
 	i = 0;
-	end = ft_strlen((char *)str) - 1;
+	end = ft_strlen(str);
 	start = get_start(str, set, end);
-	while (is_charset(str[end], (char *)set) == 1 && end >= start)
+	while (end > 0 && is_charset(str[end - 1], set) == 1
+		&& end - 1 >= start)
 		end--;
-	if (end - start < 0)
-		return (ft_calloc(1, sizeof(char)));
-	res = ft_calloc(end - start + 2, sizeof(char));
+	if (end - start <= 0)
+		return (ft_calloc(1, sizeof(*str)));
+	res = ft_calloc(end - start + 1, sizeof(*str));
 	if (res == NULL)
 		return (NULL);
-	while (i < end + 1 - start)
+	while (i < end - start)
 	{
 		res[i] = str[start + i];
 		i++;
 	}
-	res[i] = 0;
+	res[i] = '\0';
 	return (res);
 }

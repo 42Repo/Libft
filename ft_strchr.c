@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:25:20 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/02 18:33:04 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/03 16:17:34 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	int		i;
-	char	*s;
+	int				i;
+	unsigned char	*s;
 
-	s = (char *)str;
+	s = (unsigned char *)str;
 	i = 0;
 	while (s[i])
 	{

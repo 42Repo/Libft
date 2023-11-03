@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 18:51:56 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/02 18:21:11 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/03 16:12:59 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	*ft_strdup_split(const char *src, char charset)
 	if (tab == NULL || src == NULL)
 		return (tab);
 	i = 0;
-	while (src[i] && src[i] != charset && tab)
+	while (src[i] && src[i] != charset)
 	{
 		tab[i] = src[i];
 		i++;
@@ -51,9 +51,7 @@ static int	count_word(const char *str, char charset)
 			bol = 0;
 		}
 		else
-		{
 			bol = 1;
-		}
 		i++;
 	}
 	return (count);
@@ -73,7 +71,7 @@ char	**ft_split(const char *str, char charset)
 	ret = malloc(sizeof(char *) * (count_word(str, charset) + 1));
 	if (ret == NULL)
 		return (ret);
-	while (i < count_word(str, charset) && str)
+	while (i < count_word(str, charset))
 	{
 		while (str[j] == charset && str[j] != 0)
 			j++;

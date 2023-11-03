@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:25:39 by asuc              #+#    #+#             */
-/*   Updated: 2023/11/02 17:27:58 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/03 17:46:33 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	if (ft_strlen(s) < start)
 		return (ft_strdup(""));
-	while (s[i] && i < len && s[start + i])
+	while (i < len && s[start + i])
 		i++;
 	tab = malloc((i + 1) * sizeof(char));
 	if (!tab)

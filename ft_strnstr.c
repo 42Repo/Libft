@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 00:25:29 by asuc              #+#    #+#             */
-/*   Updated: 2023/10/31 17:13:53 by asuc             ###   ########.fr       */
+/*   Updated: 2023/11/03 16:36:09 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	long unsigned int	j;
 
 	i = 0;
-	if (little[0] == 0)
+	if (little[0] == 0 || !little)
 		return ((char *)big);
 	if (len == 0)
 		return (NULL);
