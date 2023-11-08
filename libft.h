@@ -16,6 +16,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 0
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 256
+# endif
+
 typedef struct s_list
 {
 	void			*content;
@@ -37,9 +45,9 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
-void	ft_putnbr_fd(int nb, int fd);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *str, int fd);
+int		ft_putnbr_fd(long n, int fd);
+int		ft_putchar_fd(char c, int fd);
+int		ft_putstr_fd(char *str, int fd);
 char	*ft_itoa(int n);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
@@ -65,5 +73,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+char	*get_next_line(int fd);
 
 #endif

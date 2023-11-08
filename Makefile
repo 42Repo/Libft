@@ -11,8 +11,12 @@
 # **************************************************************************** #
 
 NAME = libft.a
-COMP = gcc
+COMP = cc
 CFLAGS = -Wall -Werror -Wextra
+COUNT = 0
+TOTAL_FILES := 43
+RESET	=	$(shell echo "\033[0m")
+BCyan	=	$(shell echo "\033[1;36m")
 
 LIB = ft_strlen.c\
 	ft_atoi.c\
@@ -59,35 +63,26 @@ BONUS =	ft_lstadd_back_bonus.c\
 	ft_lstclear_bonus.c\
 	ft_lstiter_bonus.c\
 	ft_lstmap_bonus.c\
+	get_next_line.c
 
-SRC = $(LIB) $(ADDITIONAL)
-SRCS = $(LIB) $(ADDITIONAL) $(BONUS)
+SRC = $(LIB) $(ADDITIONAL) $(BONUS)
 
 OBJ = $(SRC:.c=.o)
-OBJBONUS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
 %.o : %.c
-	$(COMP) $(CFLAGS) -o $@ -c $<
+	@$(COMP) -fPIE $(CFLAGS) -o $@ -c $<
 
 $(NAME) : $(OBJ)
-	ar -rcs $(NAME) $(OBJ)
-
-bonus : $(OBJBONUS)
-	ar -rcs $(NAME) $(OBJBONUS)
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJBONUS)
+	@ar -rcs $(NAME) $(OBJ)
 
 clean :
-	rm -f $(OBJBONUS)
+	@rm -f $(OBJ)
 
 fclean : clean
-	rm -f $(NAME)
-	rm -f libft.so
+	@rm -f $(NAME)
 
 re : fclean all
 
-.PHONY: all fclean clean re bonus so
+.PHONY: all fclean clean re
