@@ -80,6 +80,10 @@ $(NAME) : $(OBJ)
 clean :
 	@rm -f $(OBJ)
 
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
+	gcc -nostartfiles -shared -o libft.so $(OBJ)
+
 fclean : clean
 	@rm -f $(NAME)
 
