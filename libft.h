@@ -18,7 +18,7 @@
 # include <stdarg.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 0
+#  define BUFFER_SIZE 32
 # endif
 
 # ifndef OPEN_MAX
