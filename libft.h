@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+#include <stdarg.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 0
@@ -74,5 +75,16 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 char	*get_next_line(int fd);
+int		ft_printf(const char *format, ...);
+char	*ft_itoa_base(unsigned long n, int base);
+int		ft_num_len_base(unsigned long n, int base);
+int		print_hex(unsigned long nb);
+int		print_hex_other(unsigned int nb, int mode);
+int		print_format(const char *format, int index, va_list arg);
+char	*ft_itoa_base_hex(unsigned int n, int base, int mode);
+int		is_format(char c);
+int		process_format(const char *format, va_list arg);
+int		handle_percent(const char *format, int *index, va_list arg, int *err);
+int		handle_character(const char *format, int *index, va_list arg, int *err);
 
 #endif
